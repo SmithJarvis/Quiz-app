@@ -40,3 +40,27 @@ class PersonForm(forms.ModelForm):
         if commit:
             person.save()
         return person
+
+
+class QuestionForm(forms.ModelForm):
+    description = forms.CharField(
+        label='Question',
+        widget=forms.Textarea(attrs={
+            'placeholder': 'What is your question?',
+            'rows': 4,
+            'class': 'form-control'
+        })
+    )
+
+    class Meta:
+        model = Question
+        fields = ('description',)
+
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['description']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Type your answer here...'})
+        }

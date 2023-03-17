@@ -47,6 +47,7 @@ class Question(models.Model):
         return self.description
 
 
+
 class Answer(models.Model):
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, related_name='answers')
